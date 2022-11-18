@@ -15,16 +15,13 @@ const ContainerForm = styled.div`
    const ComponentsImputs = styled.input `
    background-color: #cbd4da;
    border-bottom: 1px  purple solid;
-   padding: 7px 80px;
+   padding: 7px 60px;
    color: #191919;
    font-size: 1rem;
    font-weight: bolder;
    text-align: center;
    
 `
-
-
-
 
 const FormContainer = () => {
 
@@ -36,8 +33,12 @@ const referencia = useRef()
     <>
     <ContainerForm>
          <ComponentsImputs  placeholder='New  task' ref={referencia}/>
-         <Button  onClick={() => {dispatch({type: TYPES.ADD, Tarea: {id: Date.now(), tarea:referencia.current.value}   
-    })}} rightIcon={<FcTodoList size = "30px"/>} colorScheme='purple' variant= 'solid'>ADD</Button>
+         <Button  onClick={() => {
+          if (referencia.current.value !== "" ) {
+        
+            dispatch({type: TYPES.ADD, Tarea: {id: Date.now(), tarea:referencia.current.value,completed:false }  
+    })} else {alert('Debe ingresar una tarea')}
+    }} rightIcon={<FcTodoList size = "30px"/>} colorScheme='purple' variant= 'solid'>ADD</Button>
     </ContainerForm>
      
     </>

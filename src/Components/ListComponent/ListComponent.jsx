@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import styled, { css } from 'styled-components'
 import { FcCancel } from "react-icons/fc";
 import { TaskContext } from '../../taskContext/taskContext';
@@ -28,10 +28,13 @@ const ListConteiner = styled.div `
     width: 80%;
     margin-top: 10px;
     font-size: 1.4rem;
+    
 
-    ${props => props.completed.yes && 
+    ${props => props.completed && 
     css `
         background-color: #272627;
+        text-decoration: line-through;
+        
     
     `}
 
@@ -44,30 +47,41 @@ const Myspan = styled.span `
 `
 const Mybutton = styled.button `
     margin-right: 20px;
+   
 `
+const Mychecked = styled.input `
+
+`
+const ButtonConteiner = styled.div `
+    display: flex;
+    gap: 14px;
+
+
+`
+
+
+
+
 
 const ListComponent = () => {
 
     const [task, dispatch] =  useContext(TaskContext);
-    
-    const completed = {
-        yes: "completed",
-        no:"incompleted"
-    }
+    const r = useRef();
 
-    const iscomleted = (yes) => {
-            console.log(completed.yes)
-            return completed.yes
-    
-
+    const ver =()=> {
     }
-  return (
+ 
+    return (
 
     <ComponentList>
        {task.map(t => 
-         <ListConteiner completed = {iscomleted(t.completed)}> 
+         <ListConteiner  completed = {t.completed} key={t.id}> 
              <Myspan >{t.tarea}</Myspan>
-             <Mybutton onClick={() => dispatch({type:TYPES.DELL, payload:t.id })}> <FcCancel size = "30px"/></Mybutton>
+             <ButtonConteiner>
+                 <Mychecked   checked = {t.completed} onChange={ () => dispatch({type:TYPES.DONE, payload:t.id})} type="checkbox"/>
+                 <Mybutton onClick={() => dispatch({type:TYPES.DELL, payload:t.id })}> <FcCancel size = "30px"/></Mybutton>
+             </ButtonConteiner>
+            
          </ListConteiner>)}
     </ComponentList>
   )

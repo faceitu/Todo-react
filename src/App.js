@@ -3,6 +3,7 @@ import Conteiner from "./Components/Conteiner/Conteiner";
 import FormContainer from "./Components/FormContainer/FormContainer";
 import Generalconteiner from "./Components/GeneralConteiner/Generalconteiner";
 import ListComponent from "./Components/ListComponent/ListComponent";
+import GlobalStyle from "./GlobalStyles/GolbalStyle";
 import TaskProvider from "./taskContext/taskContext";
 
 
@@ -20,6 +21,7 @@ function App() {
          </Conteiner>
        </Generalconteiner>
        </TaskProvider>
+       
     </>
 
   );

@@ -9,7 +9,7 @@ const initialTasks = [{
     tarea:'Pasear al perro',
 },
     { id:"3",
-        completed: false,
+        completed: true,
     tarea:'Limpiar la casa',
     },
     {   id:"4",
