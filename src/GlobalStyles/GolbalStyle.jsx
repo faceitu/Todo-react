@@ -1,17 +1,19 @@
 import { createGlobalStyle } from "styled-components";
 
-const GlobalStyle = createGlobalStyle`
+const Globalstyles = createGlobalStyle`
     
 
  * { margin: 0;
-    box-sizing: border-box;
+     box-sizing: border-box;
      font-family: 'Poppins';
-     color: white;
-     
+   
+    
     }
 
-
-
+    body {
+        background-color: #191919;
+        height: 100vh;
+    }
 
 `
-export default GlobalStyle
+export default Globalstyles

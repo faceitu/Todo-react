@@ -1,10 +1,15 @@
-
-import Conteiner from "./Components/Conteiner/Conteiner";
-import FormContainer from "./Components/FormContainer/FormContainer";
 import Generalconteiner from "./Components/GeneralConteiner/Generalconteiner";
-import ListComponent from "./Components/ListComponent/ListComponent";
-import GlobalStyle from "./GlobalStyles/GolbalStyle";
+import Navbar from "./Components/navbar/navbar";
+import GlobalStyles from "./GlobalStyles/GolbalStyle";
+import Routes from "./routes/Routes";
 import TaskProvider from "./taskContext/taskContext";
+import {
+  BrowserRouter,
+  Route,
+  Routes as ReactDomRoutes,
+} from 'react-router-dom';
+
+
 
 
 
@@ -13,16 +18,18 @@ import TaskProvider from "./taskContext/taskContext";
 function App() {
   return (
     <>
+    <BrowserRouter>
      <TaskProvider>
-       <Generalconteiner>
-         <Conteiner>
-            <FormContainer/>
-            <ListComponent/>
-         </Conteiner>
-       </Generalconteiner>
-       </TaskProvider>
+       <Navbar/>
        
-    </>
+        <Generalconteiner>
+        <Routes/>
+       </Generalconteiner> 
+
+     </TaskProvider>
+     <GlobalStyles/>
+     </BrowserRouter>
+   </>
 
   );
 }
